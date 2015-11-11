@@ -55,7 +55,7 @@ class Info
   # @param [String] auth_header see {TokenInfo#auth_header}
   # @return [Hash]
   def whoami(auth_header)
-    json_get(target, "/userinfo?schema=openid", key_style, "authorization" => auth_header)
+    json_get(target, "/v1/profile", key_style, "authorization" => auth_header)
   end
 
   # Gets various monitoring and status variables from the server.
