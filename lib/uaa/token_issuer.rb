@@ -83,8 +83,8 @@ class TokenIssuer
   def authorize_path_args(response_type, redirect_uri, scope, state = random_state, args = {})
     params = args.merge(:client_id => @client_id, :response_type => response_type,
         :redirect_uri => redirect_uri, :state => state)
-    params[:scope] = scope = Util.strlist(scope) if scope = Util.arglist(scope)
-    params[:nonce] = state
+    #params[:scope] = scope = Util.strlist(scope) if scope = Util.arglist(scope)
+    #params[:nonce] = state
     "/v1/authorize?#{Util.encode_form(params)}"
   end
 
