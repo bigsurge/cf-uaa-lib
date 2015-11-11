@@ -75,7 +75,7 @@ class TokenIssuer
     headers = {'content-type' => FORM_UTF8, 'accept' => JSON_UTF8,
         'authorization' => Http.basic_auth(@client_id, @client_secret) }
     reply = json_parse_reply(@key_style, *request(@token_target, :post,
-        '/oauth/token', Util.encode_form(params), headers))
+        '/v1/token', Util.encode_form(params), headers))
     raise BadResponse unless reply[jkey :token_type] && reply[jkey :access_token]
     TokenInfo.new(reply)
   end
@@ -85,7 +85,7 @@ class TokenIssuer
         :redirect_uri => redirect_uri, :state => state)
     params[:scope] = scope = Util.strlist(scope) if scope = Util.arglist(scope)
     params[:nonce] = state
-    "/oauth/authorize?#{Util.encode_form(params)}"
+    "/v1/authorize?#{Util.encode_form(params)}"
   end
 
   def jkey(k) @key_style ? k : k.to_s end
