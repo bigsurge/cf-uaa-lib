@@ -55,7 +55,7 @@ class Info
   # @param [String] auth_header see {TokenInfo#auth_header}
   # @return [Hash]
   def whoami(client_id,auth_header)
-    json_get(target, "/v1/profile?clientId=#{client_id}&access_token=#{auth_header}", key_style, "authorization" => auth_header)
+    json_get(target, "/v1/profile?client_id=#{client_id}&access_token=#{auth_header}", key_style, "authorization" => auth_header)
   end
 
   # Gets various monitoring and status variables from the server.
