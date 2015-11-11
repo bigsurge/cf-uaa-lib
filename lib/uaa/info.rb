@@ -55,7 +55,7 @@ class Info
   # @param [String] auth_header see {TokenInfo#auth_header}
   # @return [Hash]
   def whoami(client_id,access_token)
-    json_get(target, "/v1/profile?clientId=gitlab&access_token="@access_token, key_style, "authorization" => auth_header)
+    json_get(target, "/v1/profile?clientId=#{client_id}&access_token=#{access_token}", key_style, "authorization" => auth_header)
   end
 
   # Gets various monitoring and status variables from the server.
